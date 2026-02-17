@@ -1,4 +1,5 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-vercel';
+
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import path from 'path';
 
@@ -9,14 +10,7 @@ const config = {
 
   kit: {
     // Static site generator
-    adapter: adapter({
-      // Static site output folder
-      pages: 'build',
-      assets: 'build',
-      fallback: 'index.html', // Using index.html instead of null for a real static site
-      precompress: false,
-      strict: true
-    }),
+    adapter: adapter(),
     
     // Custom alias defined to handle the content folder
     alias: {
@@ -25,14 +19,14 @@ const config = {
     },
     
     // Static site pre-processing options
-    prerender: {
-      crawl: true,
-      entries: [
-        '/',
-        '/about'
-      ],
-      handleHttpError: 'warn'
-    }
+    // prerender: {
+    //   crawl: true,
+    //   entries: [
+    //     '/',
+    //     '/about'
+    //   ],
+    //   handleHttpError: 'warn'
+    // }
   }
 };
 
